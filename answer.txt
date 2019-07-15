@@ -1,0 +1,30 @@
+1、select s.STUDENT_NO,s.STUDENT_NAME from HAND_STUDENT s inner join HAND_STUDENT_CORE c on s.STUDENT_N=c.STUDENT_NO inner join HAND_COURSE co on co.COURSE_NO=c.COURSE_NO where co.TEACHER_NAME='谌燕';
+
+2、select s.STUDENT_NO,s.STUDENT_NAME from HAND_STUDENT s,(select count(*) as c, STUDENT_NO from HAND_STUDENT_CORE group by STUDENT_NO) a,(select count(*) as c from HAND_COURSE) b where a.c>b.c and a.STUDENT_NO = s.STUDENT_NO;
+
+3、select s.STUDENT_NO,s.STUDENT_NAME from HAND_STUDENT s inner join (select STUDENT_NO,CORE from HAND_STUDENT_CORE where COURSE_NO='c001') cc1 on cc1.STUDENT_NO=s.STUDENT_NO inner join (select STUDENT_NO,CORE from HAND_STUDENT_CORE where COURSE_NO='c002') cc2.STUDENT_NO=s.STUDENT_NO where  cc1>cc2;
+
+4、select avg(CORE) as '平均分',(count(CORE>60)/count(CORE)) as '及格率' from HAND_STUDENT_CORE group by COURSE_NO;
+
+5、select MAX(s.age),MIN(s.age) from (select date_add(s.CREATION_DATE interval - s.STUDENT_AGE year) as year,age from HAND_STUDENT) s where s.year>'1992-01-01';
+
+6、select c.STUDENT_NO,c.COURSE_NO,c.CORE from HAND_STUDENT_CORE c group by COURSE_NO inner join (select CORE from HAND_STUDENT_CORE) c1 c1. 
+
+7、select c.STUDENT_NO,c.COURSE_NO,c.CORE from HAND_STUDENT_CORE c ;
+
+8、select STUDENT_NO,STUDENT_NAME,COURSE_NAME,(max(CORE)) from HAND_STUDENT_CORE c1 inner join (select s.STUDENT_NO,s.STUDENT_NAME,co.COURSE_NAME,c.CORE from HAND_STUDENT s inner join HAND_STUDENT_CORE c on s.STUDENT_N=c.STUDENT_NO inner join HAND_COURSE co on co.COURSE_NO=c.COURSE_NO where co.TEACHER_NAME='谌燕';
+) d d.STUDENT_NO=c1.STUDENT_NO group by COURSE_NO
+
+9、select s.STUDENT_NO,s.STUDENT_NAME,c.avg from HAND_STUDENT s inner join (select STUDENT_NO,count(CORE<60) as count,avg(CORE) as avg from HAND_STUDENT_CORE group by STUDENT_NO) c s.STUDENT_NO=c.STUDENT_NO where c.count>2;
+
+10、select count() from HAND_STUDENT  
+
+11、select  s.STUDENT_NO,s.STUDENT_NAME,'J2SE',s.CORE,LEVEL from HAND_STUDENT s ,(select CORE from HAND_STUDENT_CORE where COURSE_NO='c001') c 
+ 
+12、select t.TEACHER_NO,t.TEACHER_NAME,t1.TEACHER_NO,t1.TEACHER_NO from HAND_TEACHER t inner join (select TEACHER_NO,MANAGER_NO from HAND_TEACHER  where TEACHER_NAME='胡明星' ) t1 on t1.TEACHER_NO=t.TEACHER_NO;
+
+13、select STUDENT_NO,STUDENT_NAME,COURSE_NAME,CORE from HAND_STUDENT_CORE,HAND_STUDENT where ;
+
+14、
+
+15、
